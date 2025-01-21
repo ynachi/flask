@@ -1,0 +1,38 @@
+openapi: "3.0.0"
+info:
+  title: Greeting application
+  version: 0.0.1
+paths:
+  /:
+    get:
+      operationId: run.get_pet
+      responses:
+        '200':
+          description: Return a pet
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  name:
+                    type: string
+                  species:
+                    type: string
+  /greeting/{name}:
+    post:
+      operationId: run.post_greeting
+      responses:
+        '200':
+          description: "Greeting response"
+          content:
+            text/plain:
+              schema:
+                type: string
+      parameters:
+        - name: name
+          in: path
+          required: true
+          schema:
+            type: string
